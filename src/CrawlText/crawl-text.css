@@ -1,0 +1,35 @@
+.crawl-text-section {
+  display: flex;
+  color: #feda4a;
+  font-size: 60px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 150%;
+  perspective:250px;
+  text-align: justify;
+  height:1000px;
+}
+
+  .crawl-text-container {
+  animation: crawl 60s linear;
+  position: relative;
+  transform-origin: 50% 100%;
+}
+
+.title {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@keyframes crawl {
+  0% {
+    top: 0;
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% { 
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
