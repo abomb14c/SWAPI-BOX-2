@@ -4,7 +4,7 @@ export const cleanCrawlData = (crawlData) => {
     return {
       crawlText: result.opening_crawl,
       title: result.title,
-      release: result.release_data
+      release: result.release_date
     };
   });
   return getRandom(movieResults);
