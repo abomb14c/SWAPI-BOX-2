@@ -1,9 +1,12 @@
+import { cleanCrawlData } from "../Cleaner/Cleaner";
+
 export const fetchCrawlData = async () => {
   const url = 'https://swapi.co/api/films/';
 
   const response = await fetch(url);
-  const crawlData = await response.json();
+  const movieData = await response.json();
+  const crawlData = await Promise.resolve(movieData);
 
-  return Promise.resolve(crawlData);
+  return cleanCrawlData(crawlData);
 
 };
