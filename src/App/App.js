@@ -3,6 +3,7 @@ import './App.css';
 import {fetchCrawlData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -27,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="header">
         </header>
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
