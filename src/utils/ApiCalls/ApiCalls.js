@@ -1,4 +1,4 @@
-import { cleanCrawlData } from "../Cleaner/Cleaner";
+import { cleanCrawlData, cleanPeopleData } from "../Cleaner/Cleaner";
 
 export const fetchCrawlData = async () => {
   const url = 'https://swapi.co/api/films/';
@@ -18,8 +18,10 @@ export const fetchPeopleData = async () => {
   const peopleData = await response.json();
   const resolvedPeople = await Promise.resolve(peopleData);
   const resolvedPeopleHome = await fetchPeopleHomeworld(resolvedPeople);
+  const resolvedPeopleSpecies = await fetchPeopleSpecies(resolvedPeople);
+
  
-  return resolvedPeople;
+  return cleanPeopleData(resolvedPeople, resolvedPeopleHome, resolvedPeopleSpecies);
 
 };
 
@@ -28,8 +30,20 @@ export const fetchPeopleHomeworld = async (resolvedPeople) => {
     const response = await fetch(person.homeworld);
     const homeData = await response.json();
     const resolvedHome = await Promise.resolve(homeData);
+
     return resolvedHome;
 
   });
   return homeworld;
+};
+
+export const fetchPeopleSpecies = async (resolvedPeople) => {
+  const species = resolvedPeople.results.map(async person => {
+    const response = await fetch(person.species);
+    const speciesData = await response.json();
+    const resolvedSpecies = await Promise.resolve(speciesData);
+
+    return resolvedSpecies;
+  });
+  return species;
 };

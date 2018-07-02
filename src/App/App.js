@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const peopleData = fetchPeopleData()
+    const peopleData = await fetchPeopleData();
     console.log(peopleData);
     try {
       const crawlText =  await fetchCrawlData();
