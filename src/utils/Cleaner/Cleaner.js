@@ -13,3 +13,7 @@ export const cleanCrawlData = (crawlData) => {
 const getRandom = (results) => {
   return results[Math.floor(Math.random()*results.length)];
 };
+
+export const cleanPeopleData = ((resolvedPeople, resolvedPeopleHome) => {
+  const personData = cleanPerson(resolvedPeople);
+})

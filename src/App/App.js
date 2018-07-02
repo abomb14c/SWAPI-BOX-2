@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import {fetchCrawlData} from '../utils/ApiCalls/ApiCalls';
+import {fetchCrawlData, fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
-
+// import {fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
 class App extends Component {
   constructor(props){
     super(props);
@@ -15,6 +15,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    const peopleData = fetchPeopleData()
+    console.log(peopleData);
     try {
       const crawlText =  await fetchCrawlData();
   
