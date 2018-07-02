@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {fetchCrawlData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
+import ButtonContainer from '../ButtonContainer/ButtonContainer';
 
 class App extends Component {
   constructor(props){
@@ -28,7 +29,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <div className="logo"></div>
         </header>
+        <ButtonContainer />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
         } 
