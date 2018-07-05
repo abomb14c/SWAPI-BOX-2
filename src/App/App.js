@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {fetchCrawlData, fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
+import {fetchCrawlData, fetchPeopleData, fetchPlanetData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 // import {fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
@@ -18,7 +18,7 @@ class App extends Component {
   setPeopleData = async () => {
     try {
       const peopleData = await fetchPeopleData();
-      
+
       this.setState({peopleData});
     } catch (error){
       throw new Error("something went wrong");
@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    const planetData = await fetchPlanetData();
     try {
       const crawlText =  await fetchCrawlData();
   

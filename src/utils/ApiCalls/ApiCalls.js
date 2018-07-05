@@ -50,7 +50,8 @@ export const fetchPlanetData = async () => {
   const url = 'https://swapi.co/api/planets/';
 
   const response = await fetch(url);
-  const planetData = await response.json();
+  const rawData = await response.json();
+  const planetData = rawData.results;
 
   console.log(planetData);
 };
