@@ -19,7 +19,9 @@ class App extends Component {
     try {
       const peopleData = await fetchPeopleData();
 
-      this.setState({peopleData});
+      this.setState({peopleData,
+        crawlText: []
+      });
     } catch (error){
       throw new Error("something went wrong");
     }
@@ -44,7 +46,7 @@ class App extends Component {
         <header className="App-header">
           <div className="logo"></div>
         </header>
-        <ButtonContainer />
+        <ButtonContainer setPeopleData={this.setPeopleData} />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
         } 

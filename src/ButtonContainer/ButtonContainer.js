@@ -1,11 +1,11 @@
 import React from 'react';
 import './button-container.css';
 
-const ButtonContainer = () => {
+const ButtonContainer = ({setPeopleData}) => {
   return (
     <div className="button-container">
       <button>Planets</button>
-      <button>People</button>
+      <button onClick={setPeopleData}>People</button>
       <button>Vehicles</button>
     </div>
   );
