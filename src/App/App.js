@@ -3,14 +3,16 @@ import './App.css';
 import {fetchCrawlData, fetchPeopleData, fetchPlanetData, fetchVehicleData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
-// import {fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
+
 class App extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       crawlText: [],
-      peopleData: []
+      peopleData: [],
+      planetData: [],
+      vehicleData: []
     };
 
   }
@@ -19,15 +21,45 @@ class App extends Component {
     try {
       const peopleData = await fetchPeopleData();
 
-      this.setState({peopleData});
+      this.setState({peopleData,
+        crawlText: [],
+        planetData: [],
+        vehicleData: []
+      });
+    } catch (error){
+      throw new Error("something went wrong");
+    }
+  }
+
+  setPlanetData = async () => {
+    try {
+      const planetData = await fetchPlanetData();
+
+      this.setState({planetData,
+        crawlText: [],
+        peopleData: [],
+        vehicleData:[]
+      });
+    } catch (error){
+      throw new Error("something went wrong");
+    }
+  }
+
+  setVehicleData = async () => {
+    try {
+      const vehicleData = await fetchVehicleData();
+
+      this.setState({vehicleData,
+        crawlText: [],
+        peopleData: [],
+        planetData: []
+      });
     } catch (error){
       throw new Error("something went wrong");
     }
   }
 
   async componentDidMount() {
-    const vehicleData = await fetchVehicleData();
-    console.log(vehicleData);
     try {
       const crawlText =  await fetchCrawlData();
   
@@ -44,7 +76,11 @@ class App extends Component {
         <header className="App-header">
           <div className="logo"></div>
         </header>
-        <ButtonContainer />
+        <ButtonContainer 
+          setPeopleData={this.setPeopleData}
+          setPlanetData={this.setPlanetData}
+          setVehicleData={this.setVehicleData}
+        />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
         } 
