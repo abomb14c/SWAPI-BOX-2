@@ -13,7 +13,8 @@ class App extends Component {
       crawlText: [],
       peopleData: [],
       planetData: [],
-      vehicleData: []
+      vehicleData: [],
+      active: 'active'
     };
 
   }
@@ -25,7 +26,8 @@ class App extends Component {
       this.setState({peopleData,
         crawlText: [],
         planetData: [],
-        vehicleData: []
+        vehicleData: [],
+        active: 'active'
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -39,7 +41,8 @@ class App extends Component {
       this.setState({planetData,
         crawlText: [],
         peopleData: [],
-        vehicleData:[]
+        vehicleData:[],
+        active: 'active'
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -53,7 +56,8 @@ class App extends Component {
       this.setState({vehicleData,
         crawlText: [],
         peopleData: [],
-        planetData: []
+        planetData: [],
+        active: 'active'
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -82,11 +86,13 @@ class App extends Component {
           setPlanetData={this.setPlanetData}
           setVehicleData={this.setVehicleData}
         />
-        <CardSection 
-          peopleData={this.state.peopleData}
-          planetData={this.state.planetData}
-          vehicleData={this.state.vehicleData}
-        />
+        {this.state.active.length &&
+          <CardSection 
+            people={this.state.peopleData}
+            planets={this.state.planetData}
+            vehicles={this.state.vehicleData}
+          />
+        }
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
         } 
