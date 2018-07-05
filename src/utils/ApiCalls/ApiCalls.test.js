@@ -10,17 +10,18 @@ describe('ApiCalls', () => {
         Promise.resolve({
           status: 200,
           ok: true,
-          json: () => Promise.resolve({ data: mockData.mockCrawlData.results})
+          json: () => Promise.resolve({results: mockData.mockCrawlData.results})
         })
       );
     });
     
     it('calls fetchCrawlData with the correct params', async () => {
-      const url = 'www.url.com';
-      
-      await fetchCrawlData(url);
 
-      await expect(window.fetch).toHaveBeenCalledWith(url);
+      const expected = 'https://swapi.co/api/films/';
+      
+      await fetchCrawlData();
+
+      await expect(window.fetch).toHaveBeenCalledWith(expected);
     });
   });
   

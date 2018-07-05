@@ -9,14 +9,23 @@ class App extends Component {
     super(props);
 
     this.state = {
-      crawlText: []
+      crawlText: [],
+      peopleData: []
     };
 
   }
 
+  setPeopleData = async () => {
+    try {
+      const peopleData = await fetchPeopleData();
+      
+      this.setState({peopleData});
+    } catch (error){
+      throw new Error("something went wrong");
+    }
+  }
+
   async componentDidMount() {
-    const peopleData = await fetchPeopleData();
-    console.log(peopleData);
     try {
       const crawlText =  await fetchCrawlData();
   

@@ -1,6 +1,6 @@
 
-export const cleanCrawlData = (crawlData) => {
-  const movieResults = crawlData.results.map(result => {
+export const cleanCrawlData = (movieData) => {
+  const movieResults = movieData.results.map(result => {
     return {
       crawlText: result.opening_crawl,
       title: result.title,
@@ -14,30 +14,15 @@ const getRandom = (results) => {
   return results[Math.floor(Math.random()*results.length)];
 };
 
-export const cleanPeopleData = ((resolvedPeople, resolvedPeopleHome, resolvedPeopleSpecies) => {
-  const cleanPeople = resolvedPeople.results.map(person => {
-    // const personName = cleanPersonName(resolvedPeople);
-    const personHome = cleanPersonHome(resolvedPeopleHome);
-    const personSpecies = resolvedPeopleSpecies.name;
-
+export const cleanPeopleData = resolvedPeopleSpecies => {
+  const peopleResults = resolvedPeopleSpecies.map(person => {
     return {
       name: person.name,
-      species: personSpecies,
-      homeworld: personHome.name,
-      population: personHome.population
+      species: person.species.name,
+      homeworld: person.homeworld.name,
+      population: person.homeworld.population
     };
   });
-  return cleanPeople;
-});
-
-
-
-export const cleanPersonHome = (resolvedPeopleHome) => {
-  const homeworld = resolvedPeopleHome.map(home => {
-    return {
-      name: home.name,
-      population: home.population
-    };
-  });
-  return homeworld;
+  return peopleResults;
 };
+
