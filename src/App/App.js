@@ -27,6 +27,7 @@ class App extends Component {
 
   async componentDidMount() {
     const planetData = await fetchPlanetData();
+    console.log(planetData);
     try {
       const crawlText =  await fetchCrawlData();
   

@@ -1,4 +1,4 @@
-import { cleanCrawlData, cleanPeopleData } from "../Cleaner/Cleaner";
+import { cleanCrawlData, cleanPeopleData, cleanPlanetData } from "../Cleaner/Cleaner";
 
 
 export const fetchCrawlData = async () => {
@@ -53,5 +53,41 @@ export const fetchPlanetData = async () => {
   const rawData = await response.json();
   const planetData = rawData.results;
 
-  console.log(planetData);
+  const resolvedPlanetResidents = await fetchPlanetResidents(planetData);
+
+  
+  
+  return cleanPlanetData(resolvedPlanetResidents);
 };
+
+export const fetchPlanetResidents = async (planetData) => {
+  const planetResidents = await planetData.map( async planet => {
+    const residents = await residentData(planet.residents);
+    return {...planet, residents};
+  });
+  return Promise.all(planetResidents);
+};
+
+export const residentData = (residents) => {
+  const residentNames = residents.map( async resident => {
+    const response = await fetch(resident);
+    const residentName = await response.json();
+
+    return residentName.name;
+  });
+  return Promise.all(residentNames);
+};
+ 
+// const getPlanetPeople = (url) => {
+//   try {
+//     const unresolvedPromises = url.map(async result => {
+//       const response = await fetch(result);
+//       const residents= await response.json();
+
+//       return residents.name;
+//     });
+//     return Promise.all(unresolvedPromises);
+//   }catch(error){
+//     throw new Error("it's not working!");
+//   }
+// };
