@@ -1,6 +1,7 @@
 import React from 'react';
 import PeopleCard from '../PeopleCard/PeopleCard';
 import PlanetCard from '../PlanetCard/PlanetCard';
+import VehicleCard from '../VehicleCard/VehicleCard';
 
 const CardSection = ({people, planets, vehicles}) => {
   let displayCards;
@@ -12,6 +13,10 @@ const CardSection = ({people, planets, vehicles}) => {
   } else if (planets.length) { 
     displayCards = planets.map((planet, index) => {
       return <PlanetCard key={index} {...planet} />;
+    });
+  } else if (vehicles.length) {
+    displayCards = vehicles.map((vehicle, index) => {
+      return <VehicleCard key={index} {...vehicle} />;
     });
   }
   return (
