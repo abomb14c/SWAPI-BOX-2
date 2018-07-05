@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       crawlText: [],
       peopleData: [],
-      planetData: []
+      planetData: [],
+      vehicleData: []
     };
 
   }

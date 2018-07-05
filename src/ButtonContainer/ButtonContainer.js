@@ -1,12 +1,12 @@
 import React from 'react';
 import './button-container.css';
 
-const ButtonContainer = ({setPeopleData, setPlanetData}) => {
+const ButtonContainer = ({setPeopleData, setPlanetData, setVehicleData}) => {
   return (
     <div className="button-container">
       <button onClick={setPlanetData}>Planets</button>
       <button onClick={setPeopleData}>People</button>
-      <button>Vehicles</button>
+      <button onClick={setVehicleData}>Vehicles</button>
     </div>
   );
 };
