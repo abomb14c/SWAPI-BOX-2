@@ -3,7 +3,7 @@ import './App.css';
 import {fetchCrawlData, fetchPeopleData, fetchPlanetData, fetchVehicleData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
-// import {fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -22,7 +22,8 @@ class App extends Component {
 
       this.setState({peopleData,
         crawlText: [],
-        planetData: []
+        planetData: [],
+        vehicleData: []
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -35,7 +36,22 @@ class App extends Component {
 
       this.setState({planetData,
         crawlText: [],
-        peopleData: []
+        peopleData: [],
+        vehicleData:[]
+      });
+    } catch (error){
+      throw new Error("something went wrong");
+    }
+  }
+
+  setVehicleData = async () => {
+    try {
+      const vehicleData = await fetchVehicleData();
+
+      this.setState({vehicleData,
+        crawlText: [],
+        peopleData: [],
+        planetData: []
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -59,7 +75,11 @@ class App extends Component {
         <header className="App-header">
           <div className="logo"></div>
         </header>
-        <ButtonContainer setPeopleData={this.setPeopleData} />
+        <ButtonContainer 
+          setPeopleData={this.setPeopleData}
+          setPlanetData={this.setPlanetData}
+          setVehicleData={this.setVehicleData}
+        />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
         } 
