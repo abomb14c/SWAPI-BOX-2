@@ -3,6 +3,7 @@ import './App.css';
 import {fetchCrawlData, fetchPeopleData, fetchPlanetData, fetchVehicleData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
+import CardSection from '../CardSection/CardSection';
 
 class App extends Component {
   constructor(props){
@@ -80,6 +81,11 @@ class App extends Component {
           setPeopleData={this.setPeopleData}
           setPlanetData={this.setPlanetData}
           setVehicleData={this.setVehicleData}
+        />
+        <CardSection 
+          peopleData={this.state.peopleData}
+          planetData={this.state.planetData}
+          vehicleData={this.state.vehicleData}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
