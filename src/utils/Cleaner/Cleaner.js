@@ -26,3 +26,15 @@ export const cleanPeopleData = resolvedPeopleSpecies => {
   return peopleResults;
 };
 
+export const cleanPlanetData = resolvedPlanetResidents => {
+  const planetResults =resolvedPlanetResidents.map(planet => {
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate, 
+      residents: planet.residents
+    };
+  });
+  return planetResults;
+};
