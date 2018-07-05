@@ -1,13 +1,13 @@
-import { cleanCrawlData } from "../Cleaner/Cleaner";
+import { cleanCrawlData, cleanPeopleData } from "../Cleaner/Cleaner";
+
 
 export const fetchCrawlData = async () => {
   const url = 'https://swapi.co/api/films/';
 
   const response = await fetch(url);
   const movieData = await response.json();
-  const crawlData = await Promise.resolve(movieData);
 
-  return cleanCrawlData(crawlData);
+  return cleanCrawlData(movieData);
 
 };
 
@@ -15,21 +15,42 @@ export const fetchPeopleData = async () => {
   const url = 'https://swapi.co/api/people/';
 
   const response = await fetch(url);
-  const peopleData = await response.json();
-  const resolvedPeople = await Promise.resolve(peopleData);
-  const resolvedPeopleHome = await fetchPeopleHomeworld(resolvedPeople);
- 
-  return resolvedPeople;
+  const rawData = await response.json();
+  const peopleData = rawData.results;
+
+  const resolvedPeopleHome = await fetchPeopleHomeworld(peopleData);
+  const resolvedPeopleSpecies = await fetchPeopleSpecies(resolvedPeopleHome);
+
+  return cleanPeopleData(resolvedPeopleSpecies);
 
 };
 
-export const fetchPeopleHomeworld = async (resolvedPeople) => {
-  const homeworld = resolvedPeople.results.map(async person => {
+export const fetchPeopleHomeworld = async (people) => {
+  const homeworld = people.map(async person => {
     const response = await fetch(person.homeworld);
     const homeData = await response.json();
-    const resolvedHome = await Promise.resolve(homeData);
-    return resolvedHome;
+
+    return {...person, homeworld: homeData};
 
   });
-  return homeworld;
+  return Promise.all(homeworld);
+};
+
+export const fetchPeopleSpecies = async (people) => {
+  const species = people.map(async person => {
+    const response = await fetch(person.species);
+    const speciesData = await response.json();
+
+    return {...person, species: speciesData};
+  });
+  return Promise.all(species);
+};
+
+export const fetchPlanetData = async () => {
+  const url = 'https://swapi.co/api/planets/';
+
+  const response = await fetch(url);
+  const planetData = await response.json();
+
+  console.log(planetData);
 };
