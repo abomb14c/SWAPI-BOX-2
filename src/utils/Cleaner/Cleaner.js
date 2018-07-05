@@ -44,7 +44,7 @@ export const cleanVehicleData = resolvedVehicles => {
     return {
       name: vehicle.name,
       model: vehicle.model,
-      class: vehicle.vehicle_class,
+      vehicleClass: vehicle.vehicle_class,
       passengers: vehicle.passengers
     };
   });

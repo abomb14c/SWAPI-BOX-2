@@ -3,6 +3,7 @@ import './App.css';
 import {fetchCrawlData, fetchPeopleData, fetchPlanetData, fetchVehicleData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
+import CardSection from '../CardSection/CardSection';
 
 class App extends Component {
   constructor(props){
@@ -52,7 +53,7 @@ class App extends Component {
       this.setState({vehicleData,
         crawlText: [],
         peopleData: [],
-        planetData: []
+        planetData: []  
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -80,6 +81,11 @@ class App extends Component {
           setPeopleData={this.setPeopleData}
           setPlanetData={this.setPlanetData}
           setVehicleData={this.setVehicleData}
+        />
+        <CardSection 
+          people={this.state.peopleData}
+          planets={this.state.planetData}
+          vehicles={this.state.vehicleData}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
