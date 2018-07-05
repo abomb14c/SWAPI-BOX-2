@@ -1,4 +1,4 @@
-import { cleanCrawlData, cleanPeopleData, cleanPlanetData } from "../Cleaner/Cleaner";
+import { cleanCrawlData, cleanPeopleData, cleanPlanetData, cleanVehicleData } from "../Cleaner/Cleaner";
 
 
 export const fetchCrawlData = async () => {
@@ -82,7 +82,7 @@ export const fetchVehicleData = async () => {
 
   const response = await fetch(url);
   const vehicleData = await response.json();
-  const vehicleResults = vehicleData.results;
+  const resolvedVehicles = vehicleData.results;
 
-  console.log(vehicleData)
+  return cleanVehicleData(resolvedVehicles);
 };
