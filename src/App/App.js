@@ -10,7 +10,8 @@ class App extends Component {
 
     this.state = {
       crawlText: [],
-      peopleData: []
+      peopleData: [],
+      planetData: []
     };
 
   }
@@ -20,7 +21,21 @@ class App extends Component {
       const peopleData = await fetchPeopleData();
 
       this.setState({peopleData,
-        crawlText: []
+        crawlText: [],
+        planetData: []
+      });
+    } catch (error){
+      throw new Error("something went wrong");
+    }
+  }
+
+  setPlanetData = async () => {
+    try {
+      const planetData = await fetchPlanetData();
+
+      this.setState({planetData,
+        crawlText: [],
+        peopleData: []
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -28,8 +43,6 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const vehicleData = await fetchVehicleData();
-    console.log(vehicleData);
     try {
       const crawlText =  await fetchCrawlData();
   
