@@ -38,3 +38,15 @@ export const cleanPlanetData = resolvedPlanetResidents => {
   });
   return planetResults;
 };
+
+export const cleanVehicleData = resolvedVehicles => {
+  const vehicleResults = resolvedVehicles.map( vehicle => {
+    return {
+      name: vehicle.name,
+      model: vehicle.model,
+      class: vehicle.vehicle_class,
+      passengers: vehicle.passengers
+    };
+  });
+  return vehicleResults;
+};

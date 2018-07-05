@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {fetchCrawlData, fetchPeopleData, fetchPlanetData} from '../utils/ApiCalls/ApiCalls';
+import {fetchCrawlData, fetchPeopleData, fetchPlanetData, fetchVehicleData} from '../utils/ApiCalls/ApiCalls';
 import CrawlText  from '../CrawlText/CrawlText';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 // import {fetchPeopleData} from '../utils/ApiCalls/ApiCalls';
@@ -26,8 +26,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const planetData = await fetchPlanetData();
-    console.log(planetData);
+    const vehicleData = await fetchVehicleData();
+    console.log(vehicleData);
     try {
       const crawlText =  await fetchCrawlData();
   
