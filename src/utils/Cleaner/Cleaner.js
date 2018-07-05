@@ -38,3 +38,5 @@ export const cleanPlanetData = resolvedPlanetResidents => {
   });
   return planetResults;
 };
+
+export const cleanVehicle

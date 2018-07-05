@@ -54,8 +54,6 @@ export const fetchPlanetData = async () => {
   const planetData = rawData.results;
 
   const resolvedPlanetResidents = await fetchPlanetResidents(planetData);
-
-  
   
   return cleanPlanetData(resolvedPlanetResidents);
 };
@@ -63,6 +61,7 @@ export const fetchPlanetData = async () => {
 export const fetchPlanetResidents = async (planetData) => {
   const planetResidents = await planetData.map( async planet => {
     const residents = await residentData(planet.residents);
+
     return {...planet, residents};
   });
   return Promise.all(planetResidents);
@@ -78,16 +77,12 @@ export const residentData = (residents) => {
   return Promise.all(residentNames);
 };
  
-// const getPlanetPeople = (url) => {
-//   try {
-//     const unresolvedPromises = url.map(async result => {
-//       const response = await fetch(result);
-//       const residents= await response.json();
+export const fetchVehicleData = async () => {
+  const url = 'https://swapi.co/api/vehicles/';
 
-//       return residents.name;
-//     });
-//     return Promise.all(unresolvedPromises);
-//   }catch(error){
-//     throw new Error("it's not working!");
-//   }
-// };
+  const response = await fetch(url);
+  const vehicleData = await response.json();
+  const vehicleResults = vehicleData.results;
+
+  console.log(vehicleData)
+};
