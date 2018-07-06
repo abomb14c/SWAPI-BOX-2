@@ -2,6 +2,7 @@ import React from 'react';
 import PeopleCard from '../PeopleCard/PeopleCard';
 import PlanetCard from '../PlanetCard/PlanetCard';
 import VehicleCard from '../VehicleCard/VehicleCard';
+import './card-section.css';
 
 const CardSection = ({people, planets, vehicles}) => {
   let displayCards;
@@ -20,7 +21,7 @@ const CardSection = ({people, planets, vehicles}) => {
     });
   }
   return (
-    <div>
+    <div className="card-section">
       {displayCards}
     </div>
   );
