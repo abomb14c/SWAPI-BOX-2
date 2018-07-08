@@ -15,7 +15,8 @@ class App extends Component {
       planetData: [],
       vehicleData: [],
       favorites: [],
-      favorite: false
+      favorite: false,
+      category: ''
     };
   }
 
@@ -24,21 +25,26 @@ class App extends Component {
       const peopleData = await fetchPeopleData();
 
       this.setState({peopleData,
-        crawlText: [],
-        planetData: [],
-        vehicleData: []
+        category: 'people',
+        crawlText: []
       });
     } catch (error){
       throw new Error("something went wrong");
     }
   }
 
-  findFavoritePerson = (id) => {
-    const favoritePerson = this.state.peopleData.find(person => 
-      person.id === id);
-    this.setState({
-      favorites:[...this.state.favorites, favoritePerson]
-    });
+  findFavoritePerson = (event) => {
+    const id = event.target.value;
+    const PeopleCard = this.state.peopleData.find(object => object.id === id);
+
+    PeopleCard.favorite = !PeopleCard.favorite;
+
+    if (PeopleCard.favorite === true){
+      this.setState({favorites: [...this.state.favorites, PeopleCard]});
+    } else {
+      const filteredFavorites = this.state.favorites.filter(favorite => favorite !== PeopleCard);
+      this.setState({favorites: filteredFavorites});
+    }
   }
 
   setPlanetData = async () => {
@@ -46,9 +52,8 @@ class App extends Component {
       const planetData = await fetchPlanetData();
 
       this.setState({planetData,
-        crawlText: [],
-        peopleData: [],
-        vehicleData:[]
+        category: 'planets',
+        crawlText: []
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -75,9 +80,8 @@ class App extends Component {
       const vehicleData = await fetchVehicleData();
 
       this.setState({vehicleData,
-        crawlText: [],
-        peopleData: [],
-        planetData: []
+        category:"vehicles",
+        crawlText: []
       });
     } catch (error){
       throw new Error("something went wrong");
@@ -101,10 +105,7 @@ class App extends Component {
   setFavorites = () => {
     this.setState({
       crawlText: [],
-      peopleData: [],
-      planetData: [],
-      vehicleData: [],
-      favorite:true
+      category: 'favorites'
     });
   }
 
@@ -140,6 +141,7 @@ class App extends Component {
           findFavoriteVehicle={this.findFavoriteVehicle}
           favorites={this.state.favorites}
           favorite={this.state.favorite}
+          category={this.state.category}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
