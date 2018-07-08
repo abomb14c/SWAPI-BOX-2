@@ -1,7 +1,7 @@
 import React from 'react'; 
 import './people-card.css';
 
-const PeopleCard = ({name, species, homeworld, population, findFavoritePerson}) => {
+const PeopleCard = ({name, id, species, homeworld, population, findFavoritePerson}) => {
   return (
     <div className="card-container">
       <div className="people-card">
@@ -23,7 +23,7 @@ const PeopleCard = ({name, species, homeworld, population, findFavoritePerson}) 
           <h3 className="description-content">{population}</h3>
         </div>
       </div>
-      <button  onClick={findFavoritePerson} className="favorite">Favorite</button>
+      <button  onClick={ () => findFavoritePerson(id)} className="favorite">Favorite</button>
     </div>
   );
 

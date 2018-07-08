@@ -113,7 +113,7 @@ class App extends Component {
           planets={this.state.planetData}
           findFavoritePlanet={this.findFavoritePlanet}
           vehicles={this.state.vehicleData}
-          findFavoriteVehicles={this.findFavoriteVehicles}
+          findFavoriteVehicle={this.findFavoriteVehicle}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
