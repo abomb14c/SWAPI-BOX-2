@@ -9,7 +9,7 @@ const CardSection = ({people, planets, vehicles}) => {
 
   if (people.length) {
     displayCards = people.map((person, index) => {
-      return <PeopleCard key={index} {...person}/>;
+      return <PeopleCard key={index} {...person} />;
     });
   } else if (planets.length) { 
     displayCards = planets.map((planet, index) => {
