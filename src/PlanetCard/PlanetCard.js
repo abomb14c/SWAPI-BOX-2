@@ -10,25 +10,25 @@ const PlanetCard = ({name, terrain, population, climate, residents}) => {
         </div>
         <div className="content-div model-div"> 
           <p className="description-title">Terrain</p>
-          <h3 className="vehicle-content">{terrain}</h3>
+          <h3 className="planet-content">{terrain}</h3>
         </div>
         <hr></hr>
         <div className="content-div"> 
           <p className="description-title">Population</p>
-          <h3 className="vehicle-content">{population}</h3>
+          <h3 className="planet-content">{population}</h3>
         </div>
         <hr></hr>
         <div className="content-div"> 
           <p className="description-title">Climate</p>
-          <h3 className="vehicle-content">{climate}</h3>
+          <h3 className="planet-content">{climate}</h3>
         </div>
         <hr></hr>
         <div className="content-div"> 
           <p className="description-title">Residents</p>
-          <h3 className="vehicle-content">{residents}</h3>
+          <h3 className="planet-content">{residents}</h3>
         </div>
       </div>
-      <button className="favorite vehicle-favorite">Favorite</button>
+      <button className="favorite">Favorite</button>
     </div>
   );
 };

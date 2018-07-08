@@ -23,7 +23,7 @@ const VehicleCard = ({name, model, vehicleClass, passengers}) => {
           <h3 className="description-content">{passengers}</h3>
         </div>
       </div>
-      <button className="favorite vehicle-favorite">Favorite</button>
+      <button className="favorite">Favorite</button>
     </div>
   );
 };
