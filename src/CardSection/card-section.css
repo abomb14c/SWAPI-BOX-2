@@ -1,5 +1,8 @@
 .card-section {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  width: 95%;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
 }
