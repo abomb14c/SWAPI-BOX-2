@@ -1,0 +1,28 @@
+.planet-card {
+  align-items: center;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.30);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  margin: 1%;
+  width: 21%;
+}
+
+.planet-header {
+  height: 120px;
+  background-image: url('../assets/planets-section-header.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.planet-name {
+  color: rgba(255,255,255);
+  margin-top: 10%;
+  text-shadow: 4px 4px #000;
+}
+
+.vehicle-content {
+  font-size: 20px;
+}
