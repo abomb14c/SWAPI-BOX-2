@@ -55,13 +55,20 @@ class App extends Component {
     }
   }
 
-  findFavoritePlanet = (id) => {
-    const favoritePlanet = this.state.planetData.find(planet => 
-      planet.id === id);
-    this.setState({
-      favorites:[...this.state.favorites, favoritePlanet]
-    });
+  findFavoritePlanet = (event) => {
+    const id = event.target.value;
+    const PlanetCard = this.state.planetData.find(object => object.id === id);
+
+    PlanetCard.favorite = !PlanetCard.favorite;
+
+    if (PlanetCard.favorite === true){
+      this.setState({favorites: [...this.state.favorites, PlanetCard]});
+    } else {
+      const filteredFavorites = this.state.favorites.filter(favorite => favorite !== PlanetCard);
+      this.setState({favorites: filteredFavorites});
+    }
   }
+
 
   setVehicleData = async () => {
     try {
@@ -77,13 +84,19 @@ class App extends Component {
     }
   }
 
-  findFavoriteVehicle = (id) => {
-    const favoriteVehicle = this.state.vehicleData.find(vehicle => 
-      vehicle.id === id);
-    this.setState({
-      favorites:[...this.state.favorites, favoriteVehicle]
-    });
+  findFavoriteVehicle = (event) => {
+    const id = event.target.value;
+    const vehicleCard = this.state.vehicleData.find(object => object.id === id);
+
+    vehicleCard.favorite = !vehicleCard.favorite;
+    if (vehicleCard.favorite === true){
+      this.setState({favorites: [...this.state.favorites, vehicleCard]});
+    } else {
+      const filteredFavorites = this.state.favorites.filter(favorite => favorite !== vehicleCard);
+      this.setState({favorites: filteredFavorites});
+    }
   }
+
 
   setFavorites = () => {
     this.setState({

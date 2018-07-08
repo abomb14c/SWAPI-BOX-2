@@ -28,7 +28,7 @@ const PlanetCard = ({name, id,  terrain, population, climate, residents, findFav
           <h3 className="planet-content">{residents}</h3>
         </div>
       </div>
-      <button onClick={() => findFavoritePlanet(id)} className="favorite">Favorite</button>
+      <button onClick={findFavoritePlanet} value={id} className="favorite">Favorite</button>
     </div>
   );
 };

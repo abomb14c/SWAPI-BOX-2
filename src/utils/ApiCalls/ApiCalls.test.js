@@ -1,5 +1,6 @@
 import { fetchCrawlData } from './ApiCalls.js';
 import * as mockData from '../mockData';
+import * as cleaner from '../Cleaner/Cleaner';
 
 
 describe('ApiCalls', () => {
@@ -23,8 +24,41 @@ describe('ApiCalls', () => {
 
       await expect(window.fetch).toHaveBeenCalledWith(expected);
     });
+
+    it('should call cleanCrawlData', async () => {
+      const mockMovieData = {
+        results:[{}, {}, {}]
+      };
+
+      await fetchCrawlData();
+
+      await expect(cleaner.cleanCrawlData()).toHaveBeenCalledWith(mockMovieData);
+
+    });
   });
-  
+
+  // describe('fetch', () => {
+    
+  // });
+
+
+
+
+    // it("returns the correct people data", async () => {
+    //   const results = [
+    //     {
+    //       name: "Luke Skywalker",
+    //       category: "people",
+    //       species: 'human',
+    //       planet: 'earth yo',
+    //       population: 1,
+    //       id:'people1',
+    //       favorite: false
+    //     }
+    //   ];
+    //   await expect(getPeopleData()).resolves.toEqual(results);
+    // });
+
 });
 
 

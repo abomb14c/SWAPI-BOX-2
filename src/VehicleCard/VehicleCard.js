@@ -1,7 +1,7 @@
 import React from 'react';
 import './vehicle-card.css';
 
-const VehicleCard = ({name, id, model, vehicleClass, passengers, findFavoriteVehicle}) => {
+const VehicleCard = ({name, id, favorite, model, vehicleClass, passengers, findFavoriteVehicle}) => {
   return (
     <div className="card-container">
       <div className="vehicle-card">
@@ -23,7 +23,7 @@ const VehicleCard = ({name, id, model, vehicleClass, passengers, findFavoriteVeh
           <h3 className="description-content">{passengers}</h3>
         </div>
       </div>
-      <button onClick={() => findFavoriteVehicle(id)} className="favorite">Favorite</button>
+      <button onClick={findFavoriteVehicle} value={id} className="favorite">Favorite</button>
     </div>
   );
 };

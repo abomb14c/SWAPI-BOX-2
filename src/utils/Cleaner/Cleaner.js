@@ -22,7 +22,8 @@ export const cleanPeopleData = resolvedPeopleSpecies => {
       species: person.species.name,
       homeworld: person.homeworld.name,
       population: person.homeworld.population,
-      id:`people${index}`
+      id:`people${index}`,
+      favorite: false
     };
   });
   return peopleResults;
@@ -37,7 +38,8 @@ export const cleanPlanetData = resolvedPlanetResidents => {
       population: planet.population,
       climate: planet.climate, 
       residents: planet.residents,
-      id:`people${index}`
+      id:`planets${index}`,
+      favorite: false
     };
   });
   return planetResults;
@@ -51,7 +53,8 @@ export const cleanVehicleData = resolvedVehicles => {
       model: vehicle.model,
       vehicleClass: vehicle.vehicle_class,
       passengers: vehicle.passengers,
-      id:`people${index}`
+      id:`vehicles${index}`,
+      favorite: false
     };
   });
   return vehicleResults;
