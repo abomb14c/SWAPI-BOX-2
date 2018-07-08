@@ -1,0 +1,52 @@
+*,
+*:after,
+*:before {
+box-sizing: border-box;
+margin: 0;
+}
+
+hr {
+  margin:0 auto;
+  text-align: center;
+  width: 60%;
+}
+
+.content-div{
+  margin: 15px;
+}
+
+.people-card {
+  align-items: center;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.30);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.people-header {
+  height: 120px;
+  background-image: url('../assets/peopler-header-section.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.people-name {
+  color: rgba(255,255,255);
+  margin-top: 10%;
+  text-shadow: 4px 4px #000;
+}
+
+.description-title{
+  color: #EB544D;
+  margin-bottom: 1%;
+}
+
+.description-content {
+  font-size: 24px;
+}
+
+.species-div {
+  margin-top: 2px;  
+}

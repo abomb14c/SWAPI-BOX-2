@@ -1,0 +1,23 @@
+.vehicle-card {
+  align-items: center;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.30);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+
+}
+
+.vehicle-header {
+  height: 120px;
+  background-image: url('../assets/vehicles-section-header.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.vehicle-name {
+  color: rgba(255,255,255);
+  margin-top: 10%;
+  text-shadow: 4px 4px #000;
+}
