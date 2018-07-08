@@ -14,7 +14,8 @@ class App extends Component {
       peopleData: [],
       planetData: [],
       vehicleData: [],
-      favorites: []
+      favorites: [],
+      favorite: false
     };
   }
 
@@ -69,18 +70,28 @@ class App extends Component {
       this.setState({vehicleData,
         crawlText: [],
         peopleData: [],
-        planetData: []  
+        planetData: []
       });
     } catch (error){
       throw new Error("something went wrong");
     }
   }
 
-  findFavoriteVehicles = (id) => {
+  findFavoriteVehicle = (id) => {
     const favoriteVehicle = this.state.vehicleData.find(vehicle => 
       vehicle.id === id);
     this.setState({
       favorites:[...this.state.favorites, favoriteVehicle]
+    });
+  }
+
+  setFavorites = () => {
+    this.setState({
+      crawlText: [],
+      peopleData: [],
+      planetData: [],
+      vehicleData: [],
+      favorite:true
     });
   }
 
@@ -105,6 +116,7 @@ class App extends Component {
           setPeopleData={this.setPeopleData}
           setPlanetData={this.setPlanetData}
           setVehicleData={this.setVehicleData}
+          setFavorites={this.setFavorites}
         />
         <CardSection 
           people={this.state.peopleData}
@@ -114,6 +126,7 @@ class App extends Component {
           vehicles={this.state.vehicleData}
           findFavoriteVehicle={this.findFavoriteVehicle}
           favorites={this.state.favorites}
+          favorite={this.state.favorite}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />

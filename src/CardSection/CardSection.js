@@ -10,7 +10,8 @@ const CardSection = ({people,
   findFavoritePlanet, 
   vehicles,
   findFavoriteVehicle,
-  favorites}) => {
+  favorites,
+  favorite}) => {
   let displayCards;
 
   if (people.length) {
@@ -37,8 +38,8 @@ const CardSection = ({people,
         findFavoriteVehicle={findFavoriteVehicle} 
       />;
     });
-  } else if (favorites.length){
-    displayCards= favorites.map(favorite => {
+  } else if (favorite === true){
+    displayCards = favorites.map(favorite => {
       if (favorite.category === "people"){
         return <PeopleCard {...favorite} findFavoritePerson={findFavoritePerson}/>;
       } else if (favorite.category === "planets"){
@@ -46,6 +47,7 @@ const CardSection = ({people,
       } else if (favorite.category === "vehicles"){
         return <VehicleCard {...favorite} findFavoriteVehicle={findFavoriteVehicle} />;
       }
+      return displayCards;
     });
   }
 
