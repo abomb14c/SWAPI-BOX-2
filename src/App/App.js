@@ -63,7 +63,6 @@ class App extends Component {
     });
   }
 
-
   setVehicleData = async () => {
     try {
       const vehicleData = await fetchVehicleData();

@@ -1,7 +1,7 @@
 import React from 'react';
 import './planet-card.css';
 
-const PlanetCard = ({name, terrain, population, climate, residents}) => {
+const PlanetCard = ({name, id,  terrain, population, climate, residents, findFavoritePlanet}) => {
   return (
     <div className="card-container">
       <div className="planet-card">
@@ -28,7 +28,7 @@ const PlanetCard = ({name, terrain, population, climate, residents}) => {
           <h3 className="planet-content">{residents}</h3>
         </div>
       </div>
-      <button className="favorite">Favorite</button>
+      <button onClick={() => findFavoritePlanet(id)} className="favorite">Favorite</button>
     </div>
   );
 };
