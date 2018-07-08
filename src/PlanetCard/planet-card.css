@@ -1,6 +1,7 @@
 .card-container {
   margin-bottom: 25px;
   width: 21%;
+  margin-left: 1%;
   margin-right: 1%;
 }
 
@@ -12,8 +13,6 @@
   flex-direction: column;
   height: 500px;
   overflow: scroll;
-  /* margin: 1%; */
-
 }
 
 .planet-header {
@@ -30,9 +29,6 @@
   text-shadow: 4px 4px #000;
 }
 
-/* .planet-content {
-  font-size: 14px;
-} */
 
 .favorite {
   border: 1px solid #EB544D;

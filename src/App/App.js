@@ -13,9 +13,10 @@ class App extends Component {
       crawlText: [],
       peopleData: [],
       planetData: [],
-      vehicleData: []
+      vehicleData: [],
+      favorites: [],
+      favorite: false
     };
-
   }
 
   setPeopleData = async () => {
@@ -32,6 +33,14 @@ class App extends Component {
     }
   }
 
+  findFavoritePerson = (id) => {
+    const favoritePerson = this.state.peopleData.find(person => 
+      person.id === id);
+    this.setState({
+      favorites:[...this.state.favorites, favoritePerson]
+    });
+  }
+
   setPlanetData = async () => {
     try {
       const planetData = await fetchPlanetData();
@@ -46,6 +55,14 @@ class App extends Component {
     }
   }
 
+  findFavoritePlanet = (id) => {
+    const favoritePlanet = this.state.planetData.find(planet => 
+      planet.id === id);
+    this.setState({
+      favorites:[...this.state.favorites, favoritePlanet]
+    });
+  }
+
   setVehicleData = async () => {
     try {
       const vehicleData = await fetchVehicleData();
@@ -53,11 +70,29 @@ class App extends Component {
       this.setState({vehicleData,
         crawlText: [],
         peopleData: [],
-        planetData: []  
+        planetData: []
       });
     } catch (error){
       throw new Error("something went wrong");
     }
+  }
+
+  findFavoriteVehicle = (id) => {
+    const favoriteVehicle = this.state.vehicleData.find(vehicle => 
+      vehicle.id === id);
+    this.setState({
+      favorites:[...this.state.favorites, favoriteVehicle]
+    });
+  }
+
+  setFavorites = () => {
+    this.setState({
+      crawlText: [],
+      peopleData: [],
+      planetData: [],
+      vehicleData: [],
+      favorite:true
+    });
   }
 
   async componentDidMount() {
@@ -81,11 +116,17 @@ class App extends Component {
           setPeopleData={this.setPeopleData}
           setPlanetData={this.setPlanetData}
           setVehicleData={this.setVehicleData}
+          setFavorites={this.setFavorites}
         />
         <CardSection 
           people={this.state.peopleData}
+          findFavoritePerson={this.findFavoritePerson}
           planets={this.state.planetData}
+          findFavoritePlanet={this.findFavoritePlanet}
           vehicles={this.state.vehicleData}
+          findFavoriteVehicle={this.findFavoriteVehicle}
+          favorites={this.state.favorites}
+          favorite={this.state.favorite}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
