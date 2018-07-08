@@ -18,6 +18,7 @@ export const cleanPeopleData = resolvedPeopleSpecies => {
   const peopleResults = resolvedPeopleSpecies.map((person, index) => {
     return {
       name: person.name,
+      category:'people',
       species: person.species.name,
       homeworld: person.homeworld.name,
       population: person.homeworld.population,
@@ -31,6 +32,7 @@ export const cleanPlanetData = resolvedPlanetResidents => {
   const planetResults =resolvedPlanetResidents.map((planet, index) => {
     return {
       name: planet.name,
+      category:'planets',
       terrain: planet.terrain,
       population: planet.population,
       climate: planet.climate, 
@@ -45,6 +47,7 @@ export const cleanVehicleData = resolvedVehicles => {
   const vehicleResults = resolvedVehicles.map((vehicle, index) => {
     return {
       name: vehicle.name,
+      category:'vehicles',
       model: vehicle.model,
       vehicleClass: vehicle.vehicle_class,
       passengers: vehicle.passengers,

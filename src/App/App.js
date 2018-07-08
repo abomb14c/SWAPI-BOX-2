@@ -16,7 +16,6 @@ class App extends Component {
       vehicleData: [],
       favorites: []
     };
-
   }
 
   setPeopleData = async () => {
@@ -114,6 +113,7 @@ class App extends Component {
           findFavoritePlanet={this.findFavoritePlanet}
           vehicles={this.state.vehicleData}
           findFavoriteVehicle={this.findFavoriteVehicle}
+          favorites={this.state.favorites}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
