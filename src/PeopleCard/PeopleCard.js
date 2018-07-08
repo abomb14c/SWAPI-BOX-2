@@ -23,7 +23,7 @@ const PeopleCard = ({name, id, species, homeworld, population, findFavoritePerso
           <h3 className="description-content">{population}</h3>
         </div>
       </div>
-      <button  onClick={ () => findFavoritePerson(id)} className="favorite">Favorite</button>
+      <button  onClick={findFavoritePerson} value={id} className="favorite">Favorite</button>
     </div>
   );
 
