@@ -14,15 +14,27 @@ const CardSection = ({people,
 
   if (people.length) {
     displayCards = people.map((person, index) => {
-      return <PeopleCard key={index} {...person} findFavoritePerson={findFavoritePerson}/>;
+      return <PeopleCard 
+        key={index} 
+        {...person} 
+        findFavoritePerson={findFavoritePerson}
+      />;
     });
   } else if (planets.length) { 
     displayCards = planets.map((planet, index) => {
-      return <PlanetCard key={index} {...planet} findFavoritePlanet={findFavoritePlanet} />;
+      return <PlanetCard 
+        key={index} 
+        {...planet} 
+        findFavoritePlanet={findFavoritePlanet} 
+      />;
     });
   } else if (vehicles.length) {
     displayCards = vehicles.map((vehicle, index) => {
-      return <VehicleCard key={index} {...vehicle} findFavoriteVehicle={findFavoriteVehicle} />;
+      return <VehicleCard 
+        key={index} 
+        {...vehicle} 
+        findFavoriteVehicle={findFavoriteVehicle} 
+      />;
     });
   }
   return (
