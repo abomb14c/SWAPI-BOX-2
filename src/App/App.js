@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   findFavoritePerson = (id) => {
-    const favoritePerson = this.state.cleanPeople.find(person => 
+    const favoritePerson = this.state.peopleData.find(person => 
       person.id === id);
     this.setState({
       favorites:[...this.state.favorites, favoritePerson]
@@ -56,10 +56,10 @@ class App extends Component {
   }
 
   findFavoritePlanet = (id) => {
-    const favoritePerson = this.state.cleanPeople.find(person => 
-      person.id === id);
+    const favoritePlanet = this.state.planetData.find(planet => 
+      planet.id === id);
     this.setState({
-      favorites:[...this.state.favorites, favoritePerson]
+      favorites:[...this.state.favorites, favoritePlanet]
     });
   }
 
@@ -76,6 +76,14 @@ class App extends Component {
     } catch (error){
       throw new Error("something went wrong");
     }
+  }
+
+  findFavoriteVehicles = (id) => {
+    const favoriteVehicle = this.state.vehicleData.find(vehicle => 
+      vehicle.id === id);
+    this.setState({
+      favorites:[...this.state.favorites, favoriteVehicle]
+    });
   }
 
   async componentDidMount() {
@@ -106,6 +114,7 @@ class App extends Component {
           planets={this.state.planetData}
           findFavoritePlanet={this.findFavoritePlanet}
           vehicles={this.state.vehicleData}
+          findFavoriteVehicles={this.findFavoriteVehicles}
         />
         {this.state.crawlText &&
           <CrawlText crawlText={this.state.crawlText} />
