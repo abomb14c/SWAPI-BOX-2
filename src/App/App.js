@@ -55,6 +55,15 @@ class App extends Component {
     }
   }
 
+  findFavoritePlanet = (id) => {
+    const favoritePerson = this.state.cleanPeople.find(person => 
+      person.id === id);
+    this.setState({
+      favorites:[...this.state.favorites, favoritePerson]
+    });
+  }
+
+
   setVehicleData = async () => {
     try {
       const vehicleData = await fetchVehicleData();
@@ -95,6 +104,7 @@ class App extends Component {
           people={this.state.peopleData}
           findFavoritePerson={this.findFavoritePerson}
           planets={this.state.planetData}
+          findFavoritePlanet={this.findFavoritePlanet}
           vehicles={this.state.vehicleData}
         />
         {this.state.crawlText &&
