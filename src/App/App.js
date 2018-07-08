@@ -13,7 +13,8 @@ class App extends Component {
       crawlText: [],
       peopleData: [],
       planetData: [],
-      vehicleData: []
+      vehicleData: [],
+      favorites: []
     };
 
   }
@@ -30,6 +31,14 @@ class App extends Component {
     } catch (error){
       throw new Error("something went wrong");
     }
+  }
+
+  findFavoritePerson = (id) => {
+    const favoritePerson = this.state.cleanPeople.find(person => 
+      person.id === id);
+    this.setState({
+      favorites:[...this.state.favorites, favoritePerson]
+    });
   }
 
   setPlanetData = async () => {
@@ -84,6 +93,7 @@ class App extends Component {
         />
         <CardSection 
           people={this.state.peopleData}
+          findFavoritePerson={this.findFavoritePerson}
           planets={this.state.planetData}
           vehicles={this.state.vehicleData}
         />
