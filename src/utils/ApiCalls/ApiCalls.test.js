@@ -1,4 +1,4 @@
-import { fetchCrawlData, fetchPeopleData } from './ApiCalls.js';
+import { fetchCrawlData, fetchPeopleData, fetchPeopleHomeworld } from './ApiCalls.js';
 import * as mockData from '../mockData';
 import * as cleaner from '../Cleaner/Cleaner';
 
@@ -71,22 +71,37 @@ describe('ApiCalls', () => {
   });
 });
 
+describe('fetchPeopleHomeworld', () => {
+  window.fetch = jest.fn().mockImplementation(() => 
+    Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => Promise.resolve({results: mockData.mockPeopleData.results})
+    })
+  );
 
-// it("returns the correct people data", async () => {
-//   const results = [
-//     {
-//       name: "Luke Skywalker",
-//       category: "people",
-//       species: 'human',
-//       planet: 'earth yo',
-//       population: 1,
-//       id:'people1',
-//       favorite: false
-//     }
-//   ];
-//   await expect(getPeopleData()).resolves.toEqual(results);
-// });
+  it('calls fetchPeopleHomeworld with the correct params', async () => {
+    const mockPeople = [{birth_year: "19BBY",
+      created:"2014-12-09T13:50:51.644000Z",
+      edited: "2014-12-20T21:17:56.891000Z",
+      eye_color: "blue",
+      films: ["https://swapi.co/api/films/2/", "https://swapi.co/api/films/6/", "https://swapi.co/api/films/3/", "https://swapi.co/api/films/1/", "https://swapi.co/api/films/7/"],
+      gender: "male",
+      hair_color: "blond",
+      height: "172",
+      homeworld: "https://swapi.co/api/planets/1/",
+      mass: "77",
+      name: "Luke Skywalker",
+      skin_color: "fair",
+      species: ["https://swapi.co/api/species/1/"],
+      starships: ["https://swapi.co/api/starships/12/", "https://swapi.co/api/starships/22/"],
+      url: "https://swapi.co/api/people/1/",
+      vehicles: ["https://swapi.co/api/vehicles/14/", "https://swapi.co/api/vehicles/30/"]}];
+    
+    await fetchPeopleHomeworld(mockPeople);
 
-// });
+    await expect(fetchPeopleHomeworld()).resolves.toEqual(mockPeople);
+  });
+});
 
 
