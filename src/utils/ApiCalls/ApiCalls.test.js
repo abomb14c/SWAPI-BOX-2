@@ -31,6 +31,7 @@ describe('ApiCalls', () => {
         release: '1977-05-25' };
 
       const actual = cleaner.cleanCrawlData(mockData.mockCrawlData);
+
       await fetchCrawlData();
       
       await expect(actual).toEqual(expected);
@@ -47,6 +48,7 @@ describe('ApiCalls', () => {
       })
     );
   });
+
   it('calls fetchCrawlData with the correct params', async () => {
 
     const expected = 'https://swapi.co/api/people/';
@@ -54,6 +56,18 @@ describe('ApiCalls', () => {
     await fetchPeopleData();
 
     await expect(window.fetch).toHaveBeenCalledWith(expected);
+  });
+
+  it('should return cleanPeopleData', async () => {
+    const expected = [];
+    const resolvedPeopleSpecies = [];
+
+    const actual = cleaner.cleanPeopleData(resolvedPeopleSpecies);
+
+    await fetchPeopleData();
+
+    await expect(actual).toEqual(expected);
+
   });
 });
 
