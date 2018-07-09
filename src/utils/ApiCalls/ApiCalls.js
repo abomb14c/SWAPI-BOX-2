@@ -16,7 +16,7 @@ export const fetchPeopleData = async () => {
   const response = await fetch(url);
   const rawData = await response.json();
   const peopleData = rawData.results;
-  // console.log(peopleData)
+
   const resolvedPeopleHome = await fetchPeopleHomeworld(peopleData);
   const resolvedPeopleSpecies = await fetchPeopleSpecies(resolvedPeopleHome);
 
@@ -25,7 +25,6 @@ export const fetchPeopleData = async () => {
 };
 
 export const fetchPeopleHomeworld = async (people) => {
-  // console.log(people)
   const homeworld = people.map(async person => {
     const response = await fetch(person.homeworld);
     const homeData = await response.json();
