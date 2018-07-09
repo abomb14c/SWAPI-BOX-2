@@ -8,7 +8,6 @@ export const fetchCrawlData = async () => {
   const movieData = await response.json();
 
   return cleanCrawlData(movieData);
-
 };
 
 export const fetchPeopleData = async () => {
